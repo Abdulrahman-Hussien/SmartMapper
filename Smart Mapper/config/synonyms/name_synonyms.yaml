@@ -1,0 +1,23 @@
+# Editable by pharma ops staff - no code changes needed to add an entry.
+#
+# Each group lists variants that should be treated as equivalent during
+# matching. "canonical" is the form substituted internally for comparison;
+# the original text is always preserved for display/output.
+#
+# Add a new group whenever you spot a discrepancy the mapper missed - the
+# fastest way to improve accuracy over time is curating this file, not
+# changing the matching code.
+
+groups:
+  - canonical: "صيدلية"
+    variants: ["ص", "صيدليه", "صيدلية د", "صيدلية أ", "صيدليات"]
+  - canonical: "مؤسسة"
+    variants: ["مؤسسه", "مؤ"]
+  - canonical: "شركة"
+    variants: ["شركه", "ش"]
+  - canonical: "مستشفى"
+    variants: ["مستشفي", "مست"]
+  - canonical: "مركز"
+    variants: ["مركز طبي", "م"]
+  - canonical: "دكتور"
+    variants: ["د", "د."]

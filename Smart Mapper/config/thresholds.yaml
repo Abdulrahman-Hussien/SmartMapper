@@ -1,0 +1,19 @@
+# Confidence thresholds that drive the AUTO_MATCHED / PENDING_REVIEW /
+# CANDIDATE_NEW_CUSTOMER decision (smart_mapper/matching/decision.py).
+#
+# DO NOT hand-tune these from intuition. Run `smart-mapper backtest` against
+# the historical mapping table first - it measures actual precision/recall at
+# a sweep of threshold values and recommends values here. Treat these
+# defaults as placeholders only, pending that calibration + your sign-off.
+
+default:
+  auto_accept_threshold: 0.92
+  review_lower_threshold: 0.70
+
+# Per-distributor overrides, since data quality varies by distributor.
+# Example:
+# overrides:
+#   DIST_A:
+#     auto_accept_threshold: 0.90
+#     review_lower_threshold: 0.65
+overrides: {}

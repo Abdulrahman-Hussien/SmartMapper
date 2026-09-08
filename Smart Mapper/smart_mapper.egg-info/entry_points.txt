@@ -1,0 +1,2 @@
+[console_scripts]
+smart-mapper = smart_mapper.cli:cli

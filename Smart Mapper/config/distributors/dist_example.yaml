@@ -1,0 +1,19 @@
+# Example distributor config - copy config/distributors/_template.yaml for a
+# real distributor and adjust the header text/layout to match their actual file.
+
+distributor_id: "dist_example"
+display_name: "Example Distributor Co."
+
+file_type: "xlsx"
+sheet_name: "Sheet1"
+header_row_index: 0
+encoding: "utf-8"
+
+columns:
+  customer_code: "كود العميل"
+  customer_name: "اسم العميل"
+  customer_address: "العنوان"
+  city: null
+  phone: null
+
+skip_rows_where_code_blank: true

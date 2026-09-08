@@ -1,0 +1,20 @@
+# Generic tokens that carry little identifying signal for address matching.
+# They are NOT removed (removing them can distort token-count-based scoring)
+# but are down-weighted so two addresses differing only by these boilerplate
+# words still score highly.
+
+stopwords:
+  - "شارع"
+  - "ميدان"
+  - "مصر"
+  - "محافظة"
+  - "منطقة"
+  - "ص.ب"
+  - "بجوار"
+  - "أمام"
+  - "بالقرب من"
+  - "الدور"
+  - "بجانب"
+
+# Weight multiplier applied to stopword tokens during scoring (0-1).
+down_weight_factor: 0.3

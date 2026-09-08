@@ -1,0 +1,54 @@
+# Non-secret application settings. Credentials live in .env, never here.
+#
+# core_db.* describes tables that ALREADY EXIST in the company database and
+# are only ever read (SELECT), never written. The table/column names below
+# are PLACEHOLDERS - confirm the real ones during the Phase 0 discovery step
+# (run `python scripts/inspect_schema.py`) and update this file. Nothing else
+# in the codebase needs to change once these are correct.
+
+core_db:
+  customer_master:
+    table: "customers"
+    columns:
+      id: "customer_id"
+      name: "customer_name"
+      address: "address"
+      city: null      # set to a real column name if the master has a dedicated city field
+      phone: null     # set to a real column name if available - strengthens matching
+
+  historical_mapping:
+    table: "distributor_customer_history"
+    columns:
+      distributor_id: "distributor_id"
+      distributor_code: "distributor_customer_code"
+      company_customer_id: "company_customer_id"
+      # If the history table also stores the ORIGINAL distributor name/address
+      # text at the time of past reconciliation, set these - it enables a much
+      # stronger accuracy backtest (see smart_mapper/calibration/backtest.py).
+      # If null, backtesting is limited to validating the exact-code fast path.
+      distributor_name_raw: null
+      distributor_address_raw: null
+
+matching:
+  # Relative weights for the composite score in smart_mapper/matching/scoring.py.
+  # Tune these using the backtest report before relying on them in production.
+  weights:
+    name: 0.5
+    address: 0.35
+    city: 0.15
+    phone: 0.3
+  # Cap on how many shortlisted candidates get fully scored per incoming row.
+  candidate_limit: 20
+
+known_cities:
+  # Used to extract a city token from free-text addresses for blocking and
+  # the city-match scoring bonus. Add city name variants as one-per-line lists
+  # nested under a canonical key, e.g.:
+  # القاهرة: ["القاهرة", "القاهره", "مصر الجديدة"]
+  القاهرة: ["القاهرة", "القاهره"]
+  الجيزة: ["الجيزة", "الجيزه"]
+  الإسكندرية: ["الإسكندرية", "الاسكندرية", "الاسكندريه"]
+
+paths:
+  output_dir: "outputs"
+  log_dir: "logs"

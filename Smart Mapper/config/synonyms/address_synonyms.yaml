@@ -1,0 +1,19 @@
+# Address-specific abbreviation groups. Same mechanism as name_synonyms.yaml.
+
+groups:
+  - canonical: "شارع"
+    variants: ["ش", "ش."]
+  - canonical: "ميدان"
+    variants: ["م", "مي"]
+  - canonical: "عمارة"
+    variants: ["عماره", "ع"]
+  - canonical: "تقاطع"
+    variants: ["تقاطع شارع"]
+  - canonical: "محافظة"
+    variants: ["محافظه", "مح"]
+  - canonical: "منطقة"
+    variants: ["منطقه"]
+  - canonical: "بجوار"
+    variants: ["ب جوار", "جوار"]
+  - canonical: "أمام"
+    variants: ["امام", "قدام"]

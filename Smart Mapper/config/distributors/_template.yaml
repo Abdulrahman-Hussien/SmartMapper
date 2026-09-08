@@ -1,0 +1,28 @@
+# Copy this file to <distributor_id>.yaml (e.g. dist_a.yaml) and fill in the
+# real column headers / layout for that distributor's report. One file per
+# distributor - adding a new distributor never requires touching Python code.
+
+distributor_id: "DIST_TEMPLATE"     # short stable identifier, used as the key in the staging DB
+display_name: "Template Distributor Co."
+
+file_type: "xlsx"                   # "xlsx" or "csv"
+sheet_name: "Sheet1"                 # xlsx only; ignored for csv
+header_row_index: 0                  # 0-based index of the row containing column headers
+encoding: "utf-8"                    # csv only; try "cp1256" if Arabic text looks garbled
+
+columns:
+  # Left side = canonical field, right side = the EXACT header text as it
+  # appears in this distributor's file.
+  customer_code: "كود العميل"
+  customer_name: "اسم العميل"
+  customer_address: "العنوان"
+  city: null                          # set if this distributor provides a separate city column
+  phone: null
+
+skip_rows_where_code_blank: true
+
+# Optional: override the global thresholds in config/thresholds.yaml for
+# this distributor specifically (its data quality may differ from others).
+# thresholds_override:
+#   auto_accept_threshold: 0.90
+#   review_lower_threshold: 0.65
